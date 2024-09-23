@@ -41,7 +41,7 @@ const containerStyle = {
   height: '80vh'
 }
 
-const initialPosition = { lat: -19.9208, lng: -43.9378 } // Start in BH
+const initialPosition = { lat: -19.9208, lng: -43.9378, timestamp: 0 } // Start in BH
 
 function Map() {
   const { isLoaded } = useJsApiLoader({
