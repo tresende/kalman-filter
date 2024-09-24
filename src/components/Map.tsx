@@ -73,7 +73,7 @@ function Map() {
     <div className="App">
       <div className="flex">
         <div className="flex flex-col p-2">
-          <h2 className="text-2xl font-bold leading-7 text-center">Debugger :bug:</h2>
+          <h2 className="text-2xl font-bold leading-7 text-center">Debugger 🐛</h2>
           <br />
           <div className="flex justify-center">
             <textarea
@@ -101,10 +101,10 @@ function Map() {
           </div>
           <div className="my-4 text-center">
             <label className="mr-2">Porcentagem de Dados Filtrados:</label>
-            <label className="mr-2">{data.length - filteredData.length}</label>
-            <label className="mr-2">de</label>
-            <label className="mr-2">{data.length}</label>
-            <label className="mr-2">({percentage.toFixed(2)}%)</label>
+            <br />
+            <label className="mr-2">
+              {data.length - filteredData.length} de {data.length} ({percentage.toFixed(2)}%)
+            </label>
           </div>
         </div>
         <GoogleMap mapContainerStyle={{ width: '100%', height: '100vh', overflow: 'none' }} center={center} zoom={15}>
