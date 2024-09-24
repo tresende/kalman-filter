@@ -23,15 +23,19 @@ function Map() {
   const [data, setData] = useState<number[][]>([])
   const [filteredData, setFilteredData] = useState<number[][]>([])
   const [center, setCenter] = useState({ lat: 0, lng: 0 })
-  const [distanceThreshold, setDistanceThreshold] = useState(100)
-  const [accuracyThreshold, setAccuracyThreshold] = useState(50)
+  const [distanceThreshold, setDistanceThreshold] = useState(21)
+  const [accuracyThreshold, setAccuracyThreshold] = useState(0)
+
   useEffect(() => {
     filterDataInputText(sample)
+    setAccuracyThreshold(15)
+    setShowFiltered(true)
   }, [])
+
   const filterData = (inputData: number[][], distanceThreshold: number, accuracyThreshold: number) => {
     const filtered = inputData.filter((point, index, array) => {
       if (index === 0) return true
-      const [prevLat, prevLong, , prevAccuracy] = array[index - 1]
+      const [prevLat, prevLong] = array[index - 1]
       const [lat, long, , accuracy] = point
       const distance = haversineDistance(prevLat, prevLong, lat, long)
       return distance >= distanceThreshold && accuracy <= accuracyThreshold
@@ -78,7 +82,7 @@ function Map() {
           <div className="flex justify-center">
             <textarea
               defaultValue={sample}
-              className="border p-2 w-full"
+              className="border p-2 w-full text-sm"
               rows={10}
               placeholder="Insira os dados de latitude, longitude, timestamp e accuracy aqui..."
               onChange={(e) => filterDataInputText(e.target.value)}
